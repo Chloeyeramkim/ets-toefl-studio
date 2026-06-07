@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETS TOEFL Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <span class="brand-mark">TS</span>
+          <div>
+            <strong>TOEFL Studio</strong>
+            <small>Updated TOEFL 2026</small>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="classboard" type="button">Class Board</button>
+          <button class="nav-item" data-view="dashboard" type="button">Dashboard</button>
+          <button class="nav-item" data-view="reading" type="button">Reading</button>
+          <button class="nav-item" data-view="listening" type="button">Listening</button>
+          <button class="nav-item" data-view="writing" type="button">Writing</button>
+          <button class="nav-item" data-view="speaking" type="button">Speaking</button>
+          <button class="nav-item" data-view="vocab" type="button">Vocabulary</button>
+          <button class="nav-item" data-view="research" type="button">Research</button>
+        </nav>
+
+        <div class="study-card">
+          <span class="label">Estimated band</span>
+          <strong id="bandScore">3.8 / 6</strong>
+            <p>2026년 1월 21일 개정 TOEFL 형식 기준 학습 점수입니다.</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">ETS TOEFL Study</p>
+            <h1>2026 개정 TOEFL 학습</h1>
+          </div>
+          <div class="actions">
+            <button class="icon-button" id="resetProgress" type="button" aria-label="Reset progress">↻</button>
+            <button class="primary-button" id="startPlan" type="button">Start plan</button>
+          </div>
+        </header>
+
+        <section class="view" id="dashboard">
+          <div class="metric-grid">
+            <article class="metric">
+              <span>Daily focus</span>
+              <strong>RC + Writing</strong>
+              <p>Complete the Words, Build a Sentence</p>
+            </article>
+            <article class="metric">
+              <span>Streak</span>
+              <strong id="streak">4 days</strong>
+              <p>10 minutes keeps it alive</p>
+            </article>
+            <article class="metric">
+              <span>Weakest skill</span>
+              <strong id="weakSkill">Speaking</strong>
+              <p>Listen and Repeat, interview response</p>
+            </article>
+            <article class="metric">
+              <span>Vocabulary due</span>
+              <strong id="dueWords">18 words</strong>
+              <p>Academic verbs and transitions</p>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Adaptive plan</p>
+                  <h2>60-minute session</h2>
+                </div>
+                <span class="pill">2026 format</span>
+              </div>
+              <div class="timeline" id="dailyPlan"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Mini diagnostic</p>
+                  <h2>Skill balance</h2>
+                </div>
+              </div>
+              <div class="radar-list">
+                <div><span>RC</span><meter value="78" min="0" max="100"></meter><strong>4.3</strong></div>
+                <div><span>LC</span><meter value="66" min="0" max="100"></meter><strong>3.7</strong></div>
+                <div><span>WR</span><meter value="70" min="0" max="100"></meter><strong>3.9</strong></div>
+                <div><span>SP</span><meter value="58" min="0" max="100"></meter><strong>3.2</strong></div>
+                <div><span>VOC</span><meter value="74" min="0" max="100"></meter><strong>4.1</strong></div>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel format-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Official format baseline</p>
+                <h2>2026 개정 TOEFL 핵심 구조</h2>
+              </div>
+              <span class="pill">1-6 scale</span>
+            </div>
+            <div class="format-grid" id="formatGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="reading">
+          <section class="panel lesson-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Reading</p>
+              <h2>Complete the Words</h2>
+              </div>
+              <span class="pill">8 min</span>
+            </div>
+            <p class="passage">
+              Studying in a new academic enviro___ requires more than memorizing information. Students must
+              recog___ unfamiliar words from context and connect ideas across short, focused texts.
+            </p>
+            <div class="question-block" data-answer="b">
+              <h3>Which pair best completes the missing words?</h3>
+              <button data-choice="a" type="button">environmental / recognition</button>
+              <button data-choice="b" type="button">environment / recognize</button>
+              <button data-choice="c" type="button">environments / recognized</button>
+            </div>
+            <p class="feedback" aria-live="polite"></p>
+          </section>
+          <section class="panel actual-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Day 1 Actual Test</p>
+                <h2>Reading Set</h2>
+              </div>
+              <span class="pill">25 min</span>
+            </div>
+            <div id="readingActual"></div>
+          </section>
+        </section>
+
+        <section class="view" id="listening">
+          <section class="panel lesson-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Listening</p>
+              <h2>Lecture + Campus Listening</h2>
+              </div>
+              <span class="pill">12 min</span>
+            </div>
+            <div class="audio-box">
+              <button class="play-button" id="playLecture" type="button">▶</button>
+              <div>
+                <strong>Updated TOEFL listening drill</strong>
+                <p>Listen for main idea, speaker purpose, and detail.</p>
+              </div>
+            </div>
+            <textarea id="listeningNotes" rows="6" placeholder="노트테이킹: main idea / purpose / detail / attitude"></textarea>
+            <button class="secondary-button" id="compareNotes" type="button">Compare with model notes</button>
+            <p class="feedback" id="noteFeedback"></p>
+          </section>
+          <section class="panel actual-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Day 1 Actual Test</p>
+                <h2>Listening Set</h2>
+              </div>
+              <span class="pill">20 min</span>
+            </div>
+            <div id="listeningActual"></div>
+          </section>
+        </section>
+
+        <section class="view" id="writing">
+          <section class="panel lesson-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Writing</p>
+              <h2>Build a Sentence + Discussion</h2>
+              </div>
+              <span class="pill">10 min</span>
+            </div>
+            <p class="prompt">
+              Build a Sentence 연습 후 Academic Discussion 답변을 작성하세요.
+              Topic: First-year students often use AI study tools. Should universities encourage this?
+            </p>
+            <textarea id="writingAnswer" rows="8" placeholder="한 문장 주장 → 이유 → 예시 → 수업 맥락 연결 순서로 답변하세요."></textarea>
+            <button class="primary-button" id="scoreWriting" type="button">Get feedback</button>
+            <div class="rubric" id="writingRubric"></div>
+          </section>
+          <section class="panel actual-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Day 1 Actual Test</p>
+                <h2>Writing Set</h2>
+              </div>
+              <span class="pill">25 min</span>
+            </div>
+            <div id="writingActual"></div>
+          </section>
+        </section>
+
+        <section class="view" id="speaking">
+          <section class="panel lesson-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Speaking</p>
+              <h2>Listen and Repeat + Interview</h2>
+              </div>
+              <span class="pill">45 sec</span>
+            </div>
+            <p class="prompt">Repeat the model sentence, then answer: What campus resource would help new students most?</p>
+            <div class="recorder">
+              <button class="record-button" id="recordToggle" type="button">Record</button>
+              <div>
+                <strong id="recordState">Ready</strong>
+                <p id="timer">00:45</p>
+              </div>
+            </div>
+            <textarea rows="6" placeholder="녹음 후 자신의 답변 스크립트를 붙여넣고 구조를 점검하세요."></textarea>
+          </section>
+          <section class="panel actual-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Day 1 Actual Test</p>
+                <h2>Speaking Set</h2>
+              </div>
+              <span class="pill">15 min</span>
+            </div>
+            <div id="speakingActual"></div>
+          </section>
+        </section>
+
+        <section class="view" id="vocab">
+          <section class="panel vocab-control-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Reading assignment vocabulary</p>
+                <h2>어려운 단어 기록</h2>
+              </div>
+              <span class="pill">RC Day 1</span>
+            </div>
+            <div class="vocab-add-grid">
+              <input id="customWord" type="text" placeholder="word" />
+              <input id="customMeaning" type="text" placeholder="meaning" />
+              <input id="customSynonyms" type="text" placeholder="synonyms, comma separated" />
+              <input id="customExample" type="text" placeholder="example or source" />
+              <button class="primary-button" id="addHardWord" type="button">Add hard word</button>
+            </div>
+          </section>
+          <div class="vocab-grid" id="vocabGrid"></div>
+          <section class="panel actual-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Hard words only</p>
+                <h2>어려운 단어 테스트</h2>
+              </div>
+              <span class="pill">10 min</span>
+            </div>
+            <div id="vocabActual"></div>
+          </section>
+        </section>
+
+        <section class="view active" id="classboard">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Hackers class board</p>
+                <h2>반별게시판 과제 요약</h2>
+              </div>
+              <span class="pill">Day 1 / Day 2</span>
+            </div>
+            <div class="class-summary">
+              <strong>오후 정규종합반 B · 월수금 10회</strong>
+              <p>반별게시판 진도와 과제를 Day별 학습 순서, 과제 타입, 과목별 워크스페이스로 정리합니다.</p>
+            </div>
+            <div class="classboard-grid" id="classBoardGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="research">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Hackers-based research</p>
+                <h2>공개 웹 리서치 요약</h2>
+              </div>
+              <span class="pill">No copied test items</span>
+            </div>
+            <p class="research-note">
+              해커스/서점 공개 페이지에서 확인되는 강의 구성, 교재명, 기간, 강의 수, 학습 포인트만 요약했습니다.
+              실제 교재 지문, 문제, 해설, 강의 원문은 저작권 보호 대상이므로 포함하지 않았습니다.
+            </p>
+            <div class="research-grid" id="researchGrid"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
