@@ -836,7 +836,6 @@ input[type="text"] {
     flex: 1;
   }
 
-  .nav-list,
   .metric-grid,
   .content-grid,
   .day-overview,
@@ -855,5 +854,32 @@ input[type="text"] {
   .check-button {
     grid-column: 2;
     width: 100%;
+  }
+
+  .sidebar {
+    gap: 14px;
+  }
+
+  .nav-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-item {
+    min-height: 38px;
+    padding: 9px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .study-card {
+    display: none;
+  }
+
+  .topbar {
+    margin-bottom: 14px;
+  }
+
+  .topbar h1 {
+    font-size: 1.45rem;
   }
 }
