@@ -862,7 +862,7 @@ function renderClassBoard() {
   };
 
   container.innerHTML = Object.entries(groups)
-    .sort(([dayA], [dayB]) => dayNumber(dayA) - dayNumber(dayB))
+    .sort(([dayA], [dayB]) => dayNumber(dayB) - dayNumber(dayA))
     .map(([day, items]) => {
       const taskTotal = items.reduce((sum, item) => sum + item.tasks.length, 0);
       const doneTotal = items.reduce(
