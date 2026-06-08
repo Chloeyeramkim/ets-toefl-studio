@@ -199,17 +199,17 @@ const classBoardTasks = [
   },
   {
     subject: "LC",
-    day: "Day 2",
+    day: "Day 1",
     teacher: "김지연",
     posted: "2026.06.05",
-    title: "DAY 2 진도 예습",
+    title: "Day 2 수업 준비 예습",
     tasks: [
       "Task 1 예습",
       "Section 2 p.64-65 예습",
       "p.68-69 예습",
       "문제 풀이 전 지문/음원 구조를 미리 훑고 수업에서 확인",
     ],
-    note: "LC 공지에 따르면 결석 시 녹음파일 제공이 되지 않으므로 현강 출석 관리가 중요.",
+    note: "Day 1 학습 마무리 단계에서 다음 수업 Day 2를 준비하는 LC 예습 과제입니다.",
     url: "https://www.hackers.ac/class-board/HackersTOEFL_1/7738708?no_lesson=469813&jijum=1001&cat=&opendays=&p=1",
   },
   {
@@ -283,17 +283,17 @@ const classBoardTasks = [
   },
   {
     subject: "LC",
-    day: "Day 3",
+    day: "Day 2",
     teacher: "김지연",
     posted: "2026.06.08",
-    title: "DAY 3 진도 예습",
+    title: "Day 3 수업 준비 예습",
     tasks: [
       "Task 1, 2, 3만 예습",
       "Task 4는 예습하지 않기",
       "Task 4 Section 1 p.274-275는 수업 시간에 확인",
       "예습 범위와 수업 중 확인 범위를 노트에 분리 표시",
     ],
-    note: "공지에서 Task 4는 예습하지 말라고 강조되어 있습니다.",
+    note: "Day 2 학습 마무리 단계에서 다음 수업 Day 3를 준비하는 LC 예습 과제입니다. 공지에서 Task 4는 예습하지 말라고 강조되어 있습니다.",
     url: "https://www.hackers.ac/class-board/HackersTOEFL_1/7741623?no_lesson=469813&jijum=1001&cat=&opendays=&p=1",
   },
   {
